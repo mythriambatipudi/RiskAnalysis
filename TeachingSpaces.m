@@ -31,7 +31,7 @@ function [p, waittime] = TeachingSpaces(R_positivity, N_Seats, F, r, V, t_f, N_C
     
     d_NextClass = sum(n_NextClass.*450/60*1);
     d_NextClassSemester = d_NextClass*N_Classes;
-    p_nextclass = (1-exp(-d_NextClassSemester/100))*100;
+    pnextclass = (1-exp(-d_NextClassSemester/100))*100;
 
     p_Final = n(length(n))/D_Mask;
     waittime = log(p_NextClass/p_Final)/-r;
