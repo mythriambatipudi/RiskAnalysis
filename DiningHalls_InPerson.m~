@@ -1,0 +1,26 @@
+function [prob, waittime] = DiningHalls_InPerson(R_positivity, N_Seats, F, r, V, t_f, N_weeks)
+    N_Students = N_Seats*4/36;
+    N_InfectedStudents = N_Students * R_positivity;
+    D_Mask = 1-F;
+    N_meals = 3;
+    
+    t = 1:1:t_f*60;
+
+    N_ViralParticles = N_InfectedStudents * 70;
+    n = N_ViralParticles/volume *D_Mask;
+
+    dhvac = exp(-r.*t/60);
+
+    for i=1:meallength*60
+        localdens=0;
+        for j=1:t(i)
+            localdens = localdens + n*dhvac(t(i)-j+1);
+        end
+        localn1(i) = localdens;
+    end
+    
+    inhaling = localn1.*D_Mask*450/60*1;
+    dosemeal = sum(inhaling)
+    dosesem = dosemeal*nummeals*7*numweekssem
+    p = (1-exp(-dosesem/100))*100
+end
