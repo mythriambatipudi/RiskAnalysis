@@ -1,4 +1,4 @@
-function [prob, waittime] = TeachingSpaces(R_positivity, N_Seats, F, r, V, t_f, N_Classes)
+function [p, waittime] = TeachingSpaces(R_positivity, N_Seats, F, r, V, t_f, N_Classes)
     N_Students = N_Seats*4/36;
     N_InfectedStudents = N_Students * R_positivity;
     D_Mask = 1-F;
@@ -21,7 +21,7 @@ function [prob, waittime] = TeachingSpaces(R_positivity, N_Seats, F, r, V, t_f, 
     
     d_Class = sum(n.*450/60*1);
     d_Semester = d_Class*N_Classes;
-    p = (1-exp(-d_Semester/100))*100
+    p = (1-exp(-d_Semester/100))*100;
     
     
     p_NextClass = 10^-5;
@@ -34,7 +34,7 @@ function [prob, waittime] = TeachingSpaces(R_positivity, N_Seats, F, r, V, t_f, 
     p_nextclass = (1-exp(-d_NextClassSemester/100))*100;
 
     p_Final = n(length(n))/D_Mask;
-    waittime = log(p_NextClass/p_Final)/-r
+    waittime = log(p_NextClass/p_Final)/-r;
 
 end
     
