@@ -51,14 +51,14 @@ waittime = log(ndiluted/finaldens)/-r
 
 %% dining - in person
 
-positivity = 0.0016;
-numseats = 292;
+positivity = 0.0074;
+numseats = 100;
 numstudents = numseats*4/36;
 numinfected = numstudents * positivity;
 maskefficiency = 0;
 dmask = 1-maskefficiency;
-r = 0.1;
-volume = 12024744;
+r = 0.2;
+volume = 849505;
 meallength = 1;
 nummeals = 3;
 
