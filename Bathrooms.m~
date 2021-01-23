@@ -1,0 +1,31 @@
+function [p] = Bathrooms(N_Students, N_Infected, F, r, V, t_Bathroom, t_Shower, t_WaitBathroom, t_WaitShower, N_Bathroom, N_Shower)
+    D_Mask = 1-F;
+    
+    t = 1:1:t_Bathroom*60;
+
+    N_ViralParticles = N_Infected * 70;
+    Delta_p = N_ViralParticles/V * D_Mask;
+
+    D_HVAC = exp(-r.*t/60);
+    
+    for i=1:t_Bathroom*60
+        dens=0;
+        for j=1:t(i)
+            dens = dens + Delta_p * D_HVAC(t(i)-j+1);
+        end
+        n(i) = dens;
+    end
+    
+    p_f = n(length(n))
+    p_Diluted = p_f * exp(-r*t_WaitBathroom);
+
+    D_HVAC = exp(-r.*t/60);
+    n_NextVisit = p_Diluted.*D_HVAC.*D_Mask;
+    
+    inhaling = n_NextVisit.*450/60*1;
+    dosebathroom = sum(inhaling);
+
+    % shower
+    F = 0;
+    D_Mask = 1-F;
+end
