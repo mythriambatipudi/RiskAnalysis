@@ -156,7 +156,7 @@ end
     
 inhaling = localn3.*dmask*450/60*1;
 dosemeal = sum(inhaling)
-dosesem = dosemeal*7*numweekssem
+dosesem = dosemeal*7*2
 p = (1-exp(-dosesem/100))*100
 
 %% bathroom
