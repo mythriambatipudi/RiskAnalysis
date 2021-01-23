@@ -1,4 +1,4 @@
-function [p] = DormRooms(N_Students, N_InfectedStudents, F, r, V, t_f, N_Weeks)
+function [p] = DormRooms(N_Students, N_InfectedStudents, F, r, V, t_f)
     D_Mask = 1-F;
     
     t = 1:1:t_f*60;
@@ -17,6 +17,6 @@ function [p] = DormRooms(N_Students, N_InfectedStudents, F, r, V, t_f, N_Weeks)
     end
     
     d_Day = sum(n.*450/60*1);
-    d_Semester = d_Day*7*N_Weeks;
+    d_Semester = d_Day*7*2;
     p = (1-exp(-d_Semester/100))*100
 end
